@@ -22,17 +22,19 @@ except:
 # This block gets executed in the case of an error in the program
 
 --------> Error Variants
-- ValueError
+- ValueError >> inappropriate argument value (of correct type).
     ex:
     keyWord = "Hello"
     print(int(keyWord))
 
-- NameError
+- NameError >> Name not found globally
 
-- IndexError
+- IndexError >> Sequence index out of range.
     ex:
     li = [1,2,3]
     print(li[3])
+
+- KeyboardInterrupt >> program interrupted by user
 
 '''
 
