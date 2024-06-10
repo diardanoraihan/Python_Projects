@@ -4,8 +4,8 @@ def bmi_calculator(height, weight):
   result = weight / (height**2)
   return result
 
-height = float(input("Enter your height in meters e.g., 1.73"))
-weight = int(input("Enter your weight in Kg e.g., 70"))
+height = float(input("Enter your height in meters e.g., 1.73: "))
+weight = int(input("Enter your weight in Kg e.g., 70: "))
 bmi = bmi_calculator(height, weight)
 
 if bmi < 18.5:

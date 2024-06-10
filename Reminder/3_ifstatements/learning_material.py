@@ -10,7 +10,7 @@ numberChecker(inputNumber)
 
 # Nested If Statement
 height = int(input("Please input your height: "))
-if height < 120:
+if height >= 120:
   print("Yes, you can ride!")
   age = int(input("Please input your age: "))
   if age < 12:
