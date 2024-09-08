@@ -1,62 +1,8 @@
 import random as rd
+from turtle import title
+from hangman_words import word_list
+from hangman_arts import stages, titleShow
 from os import system, name # Optional
-stages = ['''
-  +---+
-  |   |
-  O   |
- /|\  |
- / \  |
-      |
-============= 
-''', '''
-  +---+
-  |   |
-  O   |
- /|\  |
- /    |
-      |
-============= 
-''', '''
-  +---+
-  |   |
-  O   |
- /|\  |
-      |
-      |
-============= 
-''', '''
-  +---+
-  |   |
-  O   |
- /|   |
-      |
-      |
-============= 
-''', '''
-  +---+
-  |   |
-  O   |
-  |   |
-      |
-      |
-============= 
-''', '''
-  +---+
-  |   |
-  O   |
-      |
-      |
-      |
-============= 
-''', '''
-  +---+
-  |   |
-      |
-      |
-      |
-      |
-============= 
-''']
 
 # Optional
 # define our clear function
@@ -70,8 +16,8 @@ def clear():
 	else:
 		_ = system('clear')
 
-word_list = ['book', 'pencil', 'pen', 'paper']
 # TODO-1: Randomly choose a word from the word_list and assign it to a variable called chosen_word. Then print it.
+titleShow()
 chosen_word = rd.choice(word_list)
 print(chosen_word)
 
@@ -79,7 +25,7 @@ print(chosen_word)
 placeholder = []
 for letter in chosen_word:
   placeholder.append("_")
-print(' '.join(placeholder))
+print("Word to guess: {}".format(' '.join(placeholder)))
 
 # TODO-3: Ask the user to guess a letter and assign their answer to a variable called guess. Make guess lowercase.
 # Note: Use a while loop to let the user guess again.
@@ -88,7 +34,11 @@ print(stages[lives])
 game_over = False
 correct_letters = []
 while not game_over:
+  print(f'**********{lives} LIVES LEFT**********')
   guess = input('Guess a letter: ').lower()
+  
+  if guess in correct_letters:
+    print(f"You've already guessed {guess}")
   display = []
 
 # TODO-4: Create a "display" that puts the guess letter in the right position. 
@@ -115,5 +65,5 @@ while not game_over:
     game_over = True
     print("You Win!")
   
-  print(' '.join(display))
+  print("Word to guess: {}".format(' '.join(display)))
   print(stages[lives])
