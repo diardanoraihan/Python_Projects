@@ -1,37 +1,41 @@
 letters = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
 
 def txtEncoder(message, shift):
+  message = message.lower()
   idx2encode = []
   for txt in message:
-    idx2encode.append(letters.index(txt))
-
-  final_indices = []
-  for idx in idx2encode:
-    if (idx + shift) < 26:
-      new_idx = idx + shift
+    if txt in letters:
+        if letters.index(txt) + shift < 26:
+          idx2encode.append(letters.index(txt) + shift)
+        else:
+          idx2encode.append(letters.index(txt) + shift - 26)
     else:
-      new_idx = (idx + shift) - 26
-    final_indices.append(new_idx)
+      idx2encode.append(txt)
 
   txtEncoded = ""
-  for idx in final_indices:
-    txtEncoded += letters[idx]
-  
+  for idx in idx2encode:
+    if isinstance(idx, int):
+      txtEncoded += letters[idx]
+    else:
+      txtEncoded += idx
+
   print(txtEncoded)
 
 def txtDecoder(message, shift):
+  message = message.lower()
   idx2decode = []
-  for txt in message:
-    idx2decode.append(letters.index(txt))
 
-  final_indices = []
-  for idx in idx2decode:
-    new_idx = idx - shift
-    final_indices.append(new_idx)
+  for txt in message:
+    if txt in letters:
+      idx2decode.append(letters.index(txt) - shift)
+    else:
+      idx2decode.append(txt)
 
   txtDecoded = ""
-  for idx in final_indices:
-    txtDecoded += letters[idx]
-  
+  for idx in idx2decode:
+    if isinstance(idx, int):
+      txtDecoded += letters[idx]
+    else:
+      txtDecoded += idx
+
   print(txtDecoded)
-  
