@@ -112,5 +112,3 @@ def get_data_coord(url):
   }
   
   return data
-
-dms_to_decimal("7°13'52.9"S")
